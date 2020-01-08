@@ -55,7 +55,7 @@ public class DOSApplicationController extends Thread implements Initializable {
 		Image backgroundImage = (new ImageParser("Main_bg.gif").getImage());
 		backgroundImageView.setImage(backgroundImage);
 		
-		loginBtn.setOnAction(e-> login());
+		loginBtn.setOnAction(e-> loginBeta());
 		SignUpBtn.setOnAction(e-> moveSignUp());
 		FindBtn.setOnAction(e->moveFind());
 		if(!visited) {
