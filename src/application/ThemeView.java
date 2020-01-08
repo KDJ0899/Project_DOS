@@ -156,7 +156,12 @@ public class ThemeView {
 
 		try {
 				AnchorPane nextScreen = FXMLLoader.load(getClass().getResource(fxmlList.get(i)));
-				new ThemeNoteView(nextScreen);
+				if(i==0) {
+					new ThemeGameView(nextScreen);
+				}
+				else {
+					new ThemeNoteView(nextScreen);
+				}
 				new Menubar(nextScreen, 1);
 				new ThemeView(nextScreen, false);
 				Scene sc = new Scene(nextScreen);

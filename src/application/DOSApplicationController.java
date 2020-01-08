@@ -298,6 +298,7 @@ public class DOSApplicationController extends Thread implements Initializable {
 					LoginSession.chooseEffect="0";
 					LoginSession.chooseNote="0";
 					LoginSession.exp="0";
+					LoginSession.items = new ArrayList<ItemDTO>();
 	               Platform.runLater(()->moveLobby());
 	            }catch (Exception e) {
 	               System.out.println("login Fail");

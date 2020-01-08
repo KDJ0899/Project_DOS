@@ -6,8 +6,6 @@ package application;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.sun.org.apache.xerces.internal.xs.StringList;
-
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -86,7 +84,7 @@ public class Menubar {
 		buttons.get(2).setOnMouseClicked(e -> btnClick(2));
 
 		fxmlList = new ArrayList<String>();
-		fxmlList.add("/view/HomeScreen.fxml");
+		fxmlList.add("/view/SelectScreen.fxml");
 		fxmlList.add("/view/ThemeScreen.fxml");
 		fxmlList.add("/view/StoreScreen.fxml");
 
@@ -158,41 +156,50 @@ public class Menubar {
 	}
 
 	private void moveScreen(int i, Stage stage) {
+		
 
 		try {
-			if (fxmlList.get(i) == "StoreScreen.fxml") {
-				AnchorPane second = FXMLLoader.load(getClass().getResource("/view/StoreScreen.fxml"));
-				StoreView storeview = new StoreView(second, true);
-				Menubar menubar = new Menubar(second, i);
-				
-				Scene sc = new Scene(second);
-
-				stage.setScene(sc);
-
-				stage.show();
-			} else if (fxmlList.get(i) == "HomeScreen.fxml") {
-				AnchorPane second = FXMLLoader.load(getClass().getResource("/view/SelectScreen.fxml"));
+			AnchorPane second = FXMLLoader.load(getClass().getResource(fxmlList.get(i)));
+			
+			if(i==0) {
 				LobbyView Lobbyview = new LobbyView(second);
-
-				Menubar menubar = new Menubar(second, i);
-
-				Scene sc = new Scene(second);
-
-				stage.setScene(sc);
-
-				stage.show();
-			} else if (fxmlList.get(i) == "ThemeScreen.fxml") {
-				AnchorPane second = FXMLLoader.load(getClass().getResource("/view/ThemeScreen.fxml"));
-				ThemeView themeView = new ThemeView(second, true);
-
-				Menubar menubar = new Menubar(second, i);
-
-				Scene sc = new Scene(second);
-
-				stage.setScene(sc);
-
-				stage.show();
 			}
+			else if(i==1) {
+				ThemeView themeView = new ThemeView(second, true);
+			}
+			else {	
+				StoreView storeview = new StoreView(second, true);
+			}
+			Menubar menubar = new Menubar(second, i);
+			
+			Scene sc = new Scene(second);
+
+			stage.setScene(sc);
+
+			stage.show();
+//			} else if (fxmlList.get(i) == "HomeScreen.fxml") {
+//				AnchorPane second = FXMLLoader.load(getClass().getResource("/view/SelectScreen.fxml"));
+//				LobbyView Lobbyview = new LobbyView(second);
+//
+//				Menubar menubar = new Menubar(second, i);
+//
+//				Scene sc = new Scene(second);
+//
+//				stage.setScene(sc);
+//
+//				stage.show();
+//			} else if (fxmlList.get(i) == "ThemeScreen.fxml") {
+//				AnchorPane second = FXMLLoader.load(getClass().getResource("/view/ThemeScreen.fxml"));
+//				ThemeView themeView = new ThemeView(second, true);
+//
+//				Menubar menubar = new Menubar(second, i);
+//
+//				Scene sc = new Scene(second);
+//
+//				stage.setScene(sc);
+//
+//				stage.show();
+//			}
 			
 			LobbyView.mod="Single";
 			LobbyView.mode_voice="none";

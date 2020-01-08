@@ -137,13 +137,20 @@ public class StoreView {
 	}
 	
 	private void btnClick(int i) {
+		
+		System.out.println(i);
 
 		Stage stage = (Stage) buttons1.get(i).getScene().getWindow();
 
 		try {
 			
 			AnchorPane nextScreen = FXMLLoader.load(getClass().getResource(fxmlList1.get(i)));
-			new StoreNoteView(nextScreen);
+			if(i==0)
+				new StoreIgmView(nextScreen);
+			else if(i==1)
+				new StoreGameView(nextScreen);
+			else
+				new StoreNoteView(nextScreen);
 			new StoreView(nextScreen, false);
 			Scene sc = new Scene(nextScreen);
 
